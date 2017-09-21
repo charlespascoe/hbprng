@@ -1,9 +1,6 @@
 import * as crypto from 'crypto';
 
 
-export type HashAlgorithm = 'md5' | 'sha1' | 'sha256' | 'sha512';
-
-
 export class Hbprng {
   private block1: Buffer;
   private pos1: number;
@@ -13,7 +10,7 @@ export class Hbprng {
 
   private hashLength: number;
 
-  constructor(private seed: Buffer, private hashAlg: HashAlgorithm = 'sha256') {
+  constructor(private seed: Buffer, private hashAlg: string = 'sha256') {
     let hash = crypto.createHash(this.hashAlg);
 
     hash.update(this.seed);
